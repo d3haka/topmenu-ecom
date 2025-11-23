@@ -12,8 +12,7 @@ export default function ProductPage() {
     queryFn: getProducts,
   });
 
-  if (!data) return <p>Loading...</p>;
-  const product = data.products.filter((p) => p.id === Number(id));
+  const product = data?.products.filter((p) => p.id === Number(id));
 
   return <div>{JSON.stringify(product, null, 2)}</div>;
 }

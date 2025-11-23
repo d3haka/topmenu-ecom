@@ -1,8 +1,9 @@
 import { QueryProvider } from "./query-provider";
 import { InitialDataProvider } from "./initial-data-provider";
 import type { Metadata } from "next";
+import "./styles.scss";
+import localFont from "next/font/local";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./styles.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,6 +15,22 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// const IYM = localFont({
+//   src: [
+//     {
+//       path: "../assets/fonts/font-light.woff",
+//       weight: "400",
+//       style: "normal",
+//     },
+//     {
+//       path: "../assets/fonts/font-bold.woff",
+//       weight: "700",
+//       style: "normal",
+//     },
+//   ],
+//   variable: "--font-iym",
+// });
+
 export const metadata: Metadata = {
   title: "خرید‌وفروش آنلاین",
 };
@@ -24,10 +41,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="fa" dir="rtl">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <QueryProvider>
-          <InitialDataProvider>{children}</InitialDataProvider>
+          <InitialDataProvider>
+            <header style={{ height: 50 }}></header>
+            {children}
+          </InitialDataProvider>
         </QueryProvider>
       </body>
     </html>

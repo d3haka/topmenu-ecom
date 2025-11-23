@@ -1,0 +1,58 @@
+:root {
+  --background: #241b20;
+
+  --gray: #afafb9;
+
+  --primaryText: #ffffff;
+
+  --primary: #c23e78;
+
+  --error: #f00;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  font-family: font-light, font-bold;
+  box-sizing: border-box;
+  background-color: var(--background);
+
+  line-height: 25px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--primaryText);
+
+  max-width: 500px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+@font-face {
+  font-family: font-light;
+  src: url("/fonts/font-light.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: font-bold;
+  src: url("/fonts/font-bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
