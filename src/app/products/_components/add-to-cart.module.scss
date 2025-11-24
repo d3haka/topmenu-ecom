@@ -1,0 +1,32 @@
+.container {
+  position: absolute;
+  background-color: var(--primary);
+  top: 45%;
+  right: 1rem;
+  min-width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0 4px;
+}
+.addBtn {
+  background-color: var(--primary);
+  top: 45%;
+  right: 1rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+}
+.addBtnActive {
+  background-color: #000;
+}
+.quantity {
+  width: 15px;
+  text-align: center;
+}

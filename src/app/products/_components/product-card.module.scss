@@ -12,7 +12,7 @@
   box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.discount-badge {
+.discountContainer {
   position: absolute;
   top: 0;
   left: 2rem;
@@ -25,47 +25,12 @@
 
   background-color: var(--error);
 }
-.discount-badge-number {
+.discountNumber {
   font-weight: 700;
   text-align: center;
 }
-.discount-badge-text {
+.discountText {
   font-size: 10;
-  text-align: center;
-}
-
-.add-to-cart {
-  position: absolute;
-  background-color: var(--primary);
-  top: 45%;
-  right: 1rem;
-  min-width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  overflow: hidden;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  padding: 0 4px;
-
-  // transition: ;
-}
-.add-to-cart-plus-inactive {
-  background-color: var(--primary);
-  top: 45%;
-  right: 1rem;
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  border: none;
-}
-.add-to-cart-plus-active {
-  background-color: #000;
-}
-.add-to-cart-quantity {
-  width: 15px;
   text-align: center;
 }
 
@@ -78,7 +43,7 @@
   text-overflow: ellipsis;
 }
 
-.card-description {
+.cardDescription {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
@@ -89,12 +54,12 @@
   margin-bottom: 16px;
 }
 
-.price-discount {
+.priceDiscount {
   font-size: 14px;
   text-decoration: line-through;
 }
 .price,
-.price-discount {
+.priceDiscount {
   text-align: left;
   & span {
     color: var(--gray);
