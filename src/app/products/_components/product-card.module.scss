@@ -2,6 +2,7 @@
   margin-bottom: 16px;
   padding: 1rem;
   position: relative;
+  overflow: hidden;
 
   display: grid;
   grid-template-columns: 110px 1fr;
@@ -30,6 +31,41 @@
 }
 .discount-badge-text {
   font-size: 10;
+  text-align: center;
+}
+
+.add-to-cart {
+  position: absolute;
+  background-color: var(--primary);
+  top: 45%;
+  right: 1rem;
+  min-width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 0 4px;
+
+  // transition: ;
+}
+.add-to-cart-plus-inactive {
+  background-color: var(--primary);
+  top: 45%;
+  right: 1rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: none;
+}
+.add-to-cart-plus-active {
+  background-color: #000;
+}
+.add-to-cart-quantity {
+  width: 15px;
   text-align: center;
 }
 

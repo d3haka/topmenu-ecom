@@ -1,18 +1,8 @@
-"use client";
-
+import ProductDetails from "./_components/product-details";
 import { getProducts } from "@/api/products";
-import { useQuery } from "@tanstack/react-query";
-import { useParams } from "next/navigation";
 
-export default function ProductPage() {
-  const { id } = useParams();
+export default async function ProductPage() {
+  const productsRes = await getProducts();
 
-  const { data } = useQuery({
-    queryKey: ["products"],
-    queryFn: getProducts,
-  });
-
-  const product = data?.products.filter((p) => p.id === Number(id));
-
-  return <div>{JSON.stringify(product, null, 2)}</div>;
+  return <ProductDetails products={productsRes} />;
 }
