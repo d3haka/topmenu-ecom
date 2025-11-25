@@ -26,22 +26,14 @@ export default function ProductDetails({
 
   const { cartItemCount } = useCartTotalPriceWithDiscount();
 
-  const product = data?.products.find((p) => p.id === Number(id));
+  const product = data?.products.find(p => p.id === Number(id));
 
   if (!product) return;
 
   return (
-    <AnimatedPage
-      hasBoxShadow
-      style={{ position: "relative", overflow: "hidden" }}
-    >
+    <AnimatedPage hasBoxShadow style={{ position: "relative", overflow: "hidden" }}>
       <div className={s.backBtn} onClick={() => router.back()}>
-        <svg
-          focusable="false"
-          aria-hidden="true"
-          viewBox="0 0 24 24"
-          fill="#fff"
-        >
+        <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" fill="#fff">
           <path d="M16.88 2.88c-.49-.49-1.28-.49-1.77 0L6.7 11.29c-.39.39-.39 1.02 0 1.41l8.41 8.41c.49.49 1.28.49 1.77 0s.49-1.28 0-1.77L9.54 12l7.35-7.35c.48-.49.48-1.28-.01-1.77z"></path>
         </svg>
       </div>
@@ -59,9 +51,7 @@ export default function ProductDetails({
           }}
           exit={{ x: -30, opacity: 0 }}
         >
-          <div className={s.discountNumber}>
-            {Math.ceil(product.discountPercentage)}%
-          </div>
+          <div className={s.discountNumber}>{Math.ceil(product.discountPercentage)}%</div>
           <div className={s.discountText}>تخفیف</div>
         </motion.div>
       )}

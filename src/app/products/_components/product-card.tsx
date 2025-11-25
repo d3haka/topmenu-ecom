@@ -1,6 +1,5 @@
 import Image from "next/image";
 import s from "./product-card.module.scss";
-import { getDiscountedPrice, getPriceInToman } from "@/utils";
 import Link from "next/link";
 import { Product } from "@/api/types/product";
 import { motion } from "motion/react";
@@ -56,10 +55,7 @@ export function ProductCard({
           />
         </div>
         <div>
-          <div
-            style={{ marginBottom: "4rem", width: "80%" }}
-            className={s.title}
-          >
+          <div style={{ marginBottom: "4rem", width: "80%" }} className={s.title}>
             {product.title}
           </div>
           <div className={s.cardDescription}>{product.description}</div>
@@ -69,30 +65,6 @@ export function ProductCard({
             price={product.price}
             discountPercentage={product.discountPercentage}
           />
-          {/* <div>
-            {product.discountPercentage ? (
-              <>
-                <div className={s.priceLineThrough}>
-                  {getPriceInToman(product.price)}
-                  <span> تومان</span>
-                </div>
-                <div className={s.price}>
-                  {getPriceInToman(
-                    getDiscountedPrice(
-                      product.price,
-                      product.discountPercentage
-                    )
-                  )}
-                  <span> تومان</span>
-                </div>
-              </>
-            ) : (
-              <div className={s.price}>
-                {getPriceInToman(product.price)}
-                <span> تومان</span>
-              </div>
-            )}
-          </div> */}
         </div>
       </div>
     </Link>

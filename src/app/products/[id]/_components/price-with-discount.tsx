@@ -52,9 +52,7 @@ export const PriceWithDiscount: FC<{
           </motion.div>
 
           {!cardVariant && (
-            <span className={s.priceDiscount}>
-              {Math.ceil(discountPercentage)}%
-            </span>
+            <span className={s.priceDiscount}>{Math.ceil(discountPercentage)}%</span>
           )}
         </>
       ) : (
