@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Product } from "@/api/types/product";
 import { motion } from "motion/react";
 import { AddToCart } from "./add-to-cart";
+import { PriceWithDiscount } from "../[id]/_components/price-with-discount";
 
 export function ProductCard({
   product,
@@ -40,6 +41,7 @@ export function ProductCard({
           <Image
             width={110}
             height={110}
+            priority
             src={product.thumbnail}
             alt="product-preview"
           />
@@ -62,7 +64,12 @@ export function ProductCard({
           </div>
           <div className={s.cardDescription}>{product.description}</div>
 
-          <div>
+          <PriceWithDiscount
+            cardVariant
+            price={product.price}
+            discountPercentage={product.discountPercentage}
+          />
+          {/* <div>
             {product.discountPercentage ? (
               <>
                 <div className={s.priceLineThrough}>
@@ -85,7 +92,7 @@ export function ProductCard({
                 <span> تومان</span>
               </div>
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </Link>

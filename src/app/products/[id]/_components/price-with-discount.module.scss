@@ -1,0 +1,13 @@
+.priceLineThrough {
+  font-size: 14px;
+  position: relative;
+  overflow: hidden;
+  color: var(--gray);
+}
+.price,
+.priceLineThrough {
+  text-align: left;
+  & span {
+    color: var(--gray);
+  }
+}

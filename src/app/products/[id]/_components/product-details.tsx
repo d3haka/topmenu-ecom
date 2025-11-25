@@ -5,13 +5,12 @@ import { AnimatedPage } from "@/app/_components/animated-page";
 import { useProducts } from "@/queries/products";
 import { useParams, useRouter } from "next/navigation";
 import s from "./product-detials.module.scss";
-import ss from "../../_components/product-card.module.scss";
 import { AddToCart } from "../../_components/add-to-cart";
-import { getDiscountedPrice, getPriceInToman } from "@/utils";
 import { useCartTotalPriceWithDiscount } from "@/hooks/useCartTotalPriceWithDiscount";
 import { Button } from "../../_components/button";
 import { motion } from "motion/react";
 import { SlideShow } from "./slide-show";
+import { PriceWithDiscount } from "./price-with-discount";
 
 export default function ProductDetails({
   productsResData,
@@ -72,37 +71,10 @@ export default function ProductDetails({
         <div className={s.priceAndAddToCartContainer}>
           {product && <AddToCart product={product} />}
 
-          <div style={{ fontWeight: 700, fontSize: 20, position: "relative" }}>
-            {product.discountPercentage ? (
-              <>
-                <div className={ss.priceLineThrough} style={{ fontSize: 16 }}>
-                  {getPriceInToman(product.price)}
-                  <span> تومان</span>
-                </div>
-                <div className={ss.price}>
-                  {getPriceInToman(
-                    getDiscountedPrice(
-                      product.price,
-                      product.discountPercentage
-                    )
-                  )}
-                  <span> تومان</span>
-                </div>
-                <span className={s.priceDiscount}>
-                  {Math.ceil(product.discountPercentage)}%
-                </span>
-              </>
-            ) : (
-              <>
-                {product && (
-                  <div className={ss.price}>
-                    {getPriceInToman(product.price)}
-                    <span> تومان</span>
-                  </div>
-                )}
-              </>
-            )}
-          </div>
+          <PriceWithDiscount
+            price={product.price}
+            discountPercentage={product.discountPercentage}
+          />
         </div>
 
         <div

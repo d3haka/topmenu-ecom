@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./styles.scss";
 import { Geist, Geist_Mono } from "next/font/google";
-import { AnimatePresence } from "motion/react";
 import { QueryProvider } from "./_components/query-provider";
 
 const geistSans = Geist({
@@ -29,10 +28,7 @@ export default async function RootLayout({
   return (
     <html lang="fa" dir="rtl">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <QueryProvider>
-          {/* <header style={{ height: 50 }}></header> */}
-          <AnimatePresence mode="wait">{children}</AnimatePresence>
-        </QueryProvider>
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );

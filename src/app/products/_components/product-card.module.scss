@@ -56,7 +56,9 @@
 
 .priceLineThrough {
   font-size: 14px;
-  text-decoration: line-through;
+  position: relative;
+  overflow: hidden;
+  color: var(--gray);
 }
 .price,
 .priceLineThrough {
