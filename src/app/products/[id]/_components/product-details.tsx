@@ -77,16 +77,17 @@ export default function ProductDetails({
           />
         </div>
 
+        <div>{product.description}</div>
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            minHeight: "48%",
+            position: "fixed",
+            bottom: 16,
+            left: "50%",
+            translate: "-50% 0",
+            width: 500,
+            padding: "0 16px",
           }}
         >
-          <div>{product.description}</div>
-
           <div style={{ display: "flex", gap: 12, overflow: "hidden" }}>
             {cartItemCount > 0 ? (
               <>
