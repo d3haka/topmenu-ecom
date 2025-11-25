@@ -15,16 +15,14 @@ const useCartStore = create<CartState>()(
     (set, get) => ({
       cartProducts: [],
 
-      addProduct: (product) => {
+      addProduct: product => {
         const currentCartProducts = get().cartProducts;
-        const existingItem = currentCartProducts.find(
-          (p) => p.id === product.id
-        );
+        const existingItem = currentCartProducts.find(p => p.id === product.id);
 
         if (existingItem) {
           set({
-            cartProducts: currentCartProducts.map((p) =>
-              p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p
+            cartProducts: currentCartProducts.map(p =>
+              p.id === product.id ? { ...p, quantity: p.quantity + 1 } : p,
             ),
           });
         } else {
@@ -34,23 +32,19 @@ const useCartStore = create<CartState>()(
         }
       },
 
-      decreaseProduct: (productId) => {
+      decreaseProduct: productId => {
         const currentCartProducts = get().cartProducts;
-        const existingItem = currentCartProducts.find(
-          (p) => p.id === productId
-        );
+        const existingItem = currentCartProducts.find(p => p.id === productId);
 
         if (existingItem) {
           if (existingItem.quantity === 1) {
             set({
-              cartProducts: currentCartProducts.filter(
-                (p) => p.id !== productId
-              ),
+              cartProducts: currentCartProducts.filter(p => p.id !== productId),
             });
           } else {
             set({
-              cartProducts: currentCartProducts.map((p) =>
-                p.id === productId ? { ...p, quantity: p.quantity - 1 } : p
+              cartProducts: currentCartProducts.map(p =>
+                p.id === productId ? { ...p, quantity: p.quantity - 1 } : p,
               ),
             });
           }
@@ -59,8 +53,8 @@ const useCartStore = create<CartState>()(
     }),
     {
       name: "shop-cart",
-    }
-  )
+    },
+  ),
 );
 
 export default useCartStore;

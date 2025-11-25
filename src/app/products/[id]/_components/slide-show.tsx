@@ -11,7 +11,7 @@ export function SlideShow({ images }: SlideShowProps) {
   const [imgIndex, setImgIndex] = useState(0);
 
   useInterval(() => {
-    setImgIndex((prev) => {
+    setImgIndex(prev => {
       if (prev === images.length - 1) return 0;
       return prev + 1;
     });
@@ -25,13 +25,7 @@ export function SlideShow({ images }: SlideShowProps) {
         exit={{ scale: 1.2, transition: { duration: 1 } }}
         transition={{ duration: 5, repeat: Infinity, repeatType: "reverse" }}
       >
-        <Image
-          priority
-          height={400}
-          width={500}
-          src={images.at(0)!}
-          alt="product-image"
-        />
+        <Image priority height={400} width={500} src={images.at(0)!} alt="product-image" />
       </motion.div>
     );
 

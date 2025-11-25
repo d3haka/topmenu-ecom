@@ -9,11 +9,7 @@ import { useCartTotalPriceWithDiscount } from "@/hooks/useCartTotalPriceWithDisc
 import { getPriceInToman } from "@/utils";
 import { Button } from "./button";
 
-export default function ProductList({
-  products,
-}: {
-  products: ProductsResData;
-}) {
+export default function ProductList({ products }: { products: ProductsResData }) {
   const { data } = useProducts({
     initialData: products,
   });
