@@ -61,9 +61,9 @@
   position: relative;
   overflow: hidden;
   color: var(--gray);
+  text-align: left;
 }
-.price,
-.priceLineThrough {
+.price {
   text-align: left;
   & span {
     color: var(--gray);

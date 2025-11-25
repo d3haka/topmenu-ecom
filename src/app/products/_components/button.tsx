@@ -1,4 +1,4 @@
-import { ComponentProps, FC } from "react";
+import { FC } from "react";
 import s from "./button.module.scss";
 import { HTMLMotionProps, motion } from "motion/react";
 

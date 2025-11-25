@@ -33,9 +33,9 @@ export function AddToCart({ product, containerStyles }: AddToCartProps) {
 
   const { cartProducts, addProduct, decreaseProduct } = useCartStore();
 
-  const productExistInCart = cartProducts.find(p => p.id === product.id);
+  const productExistsInCart = cartProducts.find(p => p.id === product.id);
 
-  if (productExistInCart)
+  if (productExistsInCart)
     return (
       <motion.div
         className={s.container}
@@ -46,7 +46,7 @@ export function AddToCart({ product, containerStyles }: AddToCartProps) {
         onClick={e => e.preventDefault()}
       >
         <motion.button
-          className={`${s.addBtn} ${productExistInCart && s.addBtnActive}`}
+          className={`${s.addBtn} ${productExistsInCart && s.addBtnActive}`}
           onClick={() => {
             addProduct(product);
             setIsForward(true);
@@ -60,7 +60,7 @@ export function AddToCart({ product, containerStyles }: AddToCartProps) {
         </motion.button>
         <AnimatePresence mode="wait" custom={isForward}>
           <motion.span
-            key={productExistInCart.quantity + "counter"}
+            key={productExistsInCart.quantity + "counter"}
             className={s.quantity}
             variants={animationVariants}
             initial={{ ...animationVariants.initial(isForward) }}
@@ -71,7 +71,7 @@ export function AddToCart({ product, containerStyles }: AddToCartProps) {
               duration: 0.1,
             }}
           >
-            {productExistInCart.quantity}
+            {productExistsInCart.quantity}
           </motion.span>
         </AnimatePresence>
         <motion.button
@@ -99,9 +99,8 @@ export function AddToCart({ product, containerStyles }: AddToCartProps) {
       style={containerStyles}
     >
       <motion.button
-        className={`${s.addBtn} ${productExistInCart && s.addBtnActive}`}
+        className={`${s.addBtn} ${productExistsInCart && s.addBtnActive}`}
         onClick={e => {
-          // e.stopPropagation();
           e.preventDefault();
           addProduct(product);
         }}

@@ -4,7 +4,7 @@ import { ProductsResData } from "@/api/products";
 import { AnimatedPage } from "@/app/_components/animated-page";
 import { useProducts } from "@/queries/products";
 import { useParams, useRouter } from "next/navigation";
-import s from "./product-detials.module.scss";
+import s from "./product-details.module.scss";
 import { AddToCart } from "../../_components/add-to-cart";
 import { useCartTotalPriceWithDiscount } from "@/hooks/useCartTotalPriceWithDiscount";
 import { Button } from "../../_components/button";
@@ -68,69 +68,20 @@ export default function ProductDetails({
         </div>
 
         <div>{product.description}</div>
-        <div
-          style={{
-            position: "fixed",
-            bottom: 16,
-            left: "50%",
-            translate: "-50% 0",
-            width: 500,
-            padding: "0 16px",
-          }}
-        >
-          <div style={{ display: "flex", gap: 12, overflow: "hidden" }}>
-            {cartItemCount > 0 ? (
-              <>
-                <Button
-                  style={{
-                    width: "100%",
-                    padding: 12,
-                    fontWeight: 700,
-                  }}
-                >
-                  <span>
-                    <span
-                      style={{
-                        borderRadius: "100%",
-                        width: 22,
-                        height: 22,
-                        backgroundColor: "#000",
-                        display: "inline-block",
-                        marginLeft: 4,
-                      }}
-                    >
-                      {cartItemCount}
-                    </span>
-                    <span style={{ fontSize: 12 }}>تکمیل خرید</span>
-                  </span>
-                </Button>
 
-                <Button
-                  style={{
-                    width: 150,
-                    fontSize: 12,
-                    color: "var(--primary)",
-                    backgroundColor: "var(--background)",
-                    padding: 12,
-                    fontWeight: 700,
-                  }}
-                >
-                  مشاهده‌ی منو
-                </Button>
-              </>
-            ) : (
-              <Button
-                style={{
-                  width: "100%",
-                  fontSize: 12,
-                  padding: 12,
-                  fontWeight: 700,
-                }}
-              >
-                مشاهده‌ی منو
+        <div className={s.btnContainer}>
+          {cartItemCount > 0 ? (
+            <>
+              <Button className={s.completeBuyBtn}>
+                <span className={s.itemCount}>{cartItemCount}</span>
+                <span style={{ fontSize: 12 }}>تکمیل خرید</span>
               </Button>
-            )}
-          </div>
+
+              <Button className={s.menuBtnOUtline}>مشاهده‌ی منو</Button>
+            </>
+          ) : (
+            <Button className={s.menuBtn}>مشاهده‌ی منو</Button>
+          )}
         </div>
       </div>
     </AnimatedPage>
