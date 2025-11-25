@@ -1,26 +1,175 @@
 "use client";
 
 import { ProductsResData } from "@/api/products";
-import { AnimatedPage } from "@/app/animated-page";
+import { AnimatedPage } from "@/app/_components/animated-page";
 import { useProducts } from "@/queries/products";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import s from "./product-detials.module.scss";
+import ss from "../../_components/product-card.module.scss";
+import { AddToCart } from "../../_components/add-to-cart";
+import { getDiscountedPrice, getPriceInToman } from "@/utils";
+import { useCartTotalPriceWithDiscount } from "@/hooks/useCartTotalPriceWithDiscount";
+import { Button } from "../../_components/button";
+import { motion } from "motion/react";
+import { SlideShow } from "./slide-show";
 
 export default function ProductDetails({
-  products,
+  productsResData,
 }: {
-  products: ProductsResData;
+  productsResData: ProductsResData;
 }) {
   const { id } = useParams();
+  const router = useRouter();
 
   const { data } = useProducts({
-    initialData: products,
+    initialData: productsResData,
   });
 
-  const product = data?.products.filter((p) => p.id === Number(id));
+  const { cartItemCount } = useCartTotalPriceWithDiscount();
+
+  const product = data?.products.find((p) => p.id === Number(id));
+
+  if (!product) return;
 
   return (
-    <AnimatedPage>
-      <div>{JSON.stringify(product, null, 2)}</div>
+    <AnimatedPage
+      hasBoxShadow
+      style={{ position: "relative", overflow: "hidden" }}
+    >
+      <div className={s.backBtn} onClick={() => router.back()}>
+        <svg
+          focusable="false"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          fill="#fff"
+        >
+          <path d="M16.88 2.88c-.49-.49-1.28-.49-1.77 0L6.7 11.29c-.39.39-.39 1.02 0 1.41l8.41 8.41c.49.49 1.28.49 1.77 0s.49-1.28 0-1.77L9.54 12l7.35-7.35c.48-.49.48-1.28-.01-1.77z"></path>
+        </svg>
+      </div>
+
+      <SlideShow images={product.images} />
+
+      {product.discountPercentage && (
+        <motion.div
+          className={s.discountContainer}
+          initial={{ x: -30, opacity: 0 }}
+          animate={{
+            x: 0,
+            opacity: 1,
+            transition: { delay: 0.1, bounce: 0 },
+          }}
+          exit={{ x: -30, opacity: 0 }}
+        >
+          <div className={s.discountNumber}>
+            {Math.ceil(product.discountPercentage)}%
+          </div>
+          <div className={s.discountText}>تخفیف</div>
+        </motion.div>
+      )}
+
+      <div className={s.container}>
+        <div className={s.title}>{product.title}</div>
+        <div className={s.priceAndAddToCartContainer}>
+          {product && <AddToCart product={product} />}
+
+          <div style={{ fontWeight: 700, fontSize: 20, position: "relative" }}>
+            {product.discountPercentage ? (
+              <>
+                <div className={ss.priceLineThrough} style={{ fontSize: 16 }}>
+                  {getPriceInToman(product.price)}
+                  <span> تومان</span>
+                </div>
+                <div className={ss.price}>
+                  {getPriceInToman(
+                    getDiscountedPrice(
+                      product.price,
+                      product.discountPercentage
+                    )
+                  )}
+                  <span> تومان</span>
+                </div>
+                <span className={s.priceDiscount}>
+                  {Math.ceil(product.discountPercentage)}%
+                </span>
+              </>
+            ) : (
+              <>
+                {product && (
+                  <div className={ss.price}>
+                    {getPriceInToman(product.price)}
+                    <span> تومان</span>
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+        </div>
+
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+            minHeight: "48%",
+          }}
+        >
+          <div>{product.description}</div>
+
+          <div style={{ display: "flex", gap: 12, overflow: "hidden" }}>
+            {cartItemCount > 0 ? (
+              <>
+                <Button
+                  style={{
+                    width: "100%",
+                    padding: 12,
+                    fontWeight: 700,
+                  }}
+                >
+                  <span>
+                    <span
+                      style={{
+                        borderRadius: "100%",
+                        width: 22,
+                        height: 22,
+                        backgroundColor: "#000",
+                        display: "inline-block",
+                        marginLeft: 4,
+                      }}
+                    >
+                      {cartItemCount}
+                    </span>
+                    <span style={{ fontSize: 12 }}>تکمیل خرید</span>
+                  </span>
+                </Button>
+
+                <Button
+                  style={{
+                    width: 150,
+                    fontSize: 12,
+                    color: "var(--primary)",
+                    backgroundColor: "var(--background)",
+                    padding: 12,
+                    fontWeight: 700,
+                  }}
+                >
+                  مشاهده‌ی منو
+                </Button>
+              </>
+            ) : (
+              <Button
+                style={{
+                  width: "100%",
+                  fontSize: 12,
+                  padding: 12,
+                  fontWeight: 700,
+                }}
+              >
+                مشاهده‌ی منو
+              </Button>
+            )}
+          </div>
+        </div>
+      </div>
     </AnimatedPage>
   );
 }

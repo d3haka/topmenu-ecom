@@ -1,9 +1,7 @@
 .container {
-  position: absolute;
   background-color: var(--primary);
-  top: 45%;
-  right: 1rem;
   min-width: 40px;
+  width: fit-content;
   height: 40px;
   border-radius: 10px;
   overflow: hidden;

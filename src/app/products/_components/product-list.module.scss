@@ -1,0 +1,16 @@
+.button {
+  position: fixed;
+  left: 50%;
+  translate: -50% 0;
+  width: 500px;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.itemCount {
+  border-radius: 100%;
+  width: 25;
+  height: 25;
+  display: inline-block;
+  background-color: #000;
+}

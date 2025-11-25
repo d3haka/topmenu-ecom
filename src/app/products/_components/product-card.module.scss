@@ -54,12 +54,12 @@
   margin-bottom: 16px;
 }
 
-.priceDiscount {
+.priceLineThrough {
   font-size: 14px;
   text-decoration: line-through;
 }
 .price,
-.priceDiscount {
+.priceLineThrough {
   text-align: left;
   & span {
     color: var(--gray);

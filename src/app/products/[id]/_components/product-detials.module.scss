@@ -1,0 +1,72 @@
+.container {
+  padding: 1.5rem;
+  height: calc(100% - 400px);
+}
+
+.backBtn {
+  position: absolute;
+  width: 38;
+  height: 38;
+  border-radius: 6px;
+  border: 1px solid gray;
+  background-color: #80808050;
+  padding: 8px;
+  cursor: pointer;
+  border: 1px solid #ffffff50;
+
+  top: 30px;
+  left: 30px;
+
+  &:hover {
+    background-color: #80808080;
+  }
+}
+
+.priceAndAddToCartContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-weight: 700;
+  margin-bottom: 5rem;
+}
+
+.priceDiscount {
+  position: absolute;
+  width: 40px;
+  height: 20px;
+  background-color: var(--primary);
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: -50px;
+  font-size: 14px;
+  color: #000;
+}
+
+.discountContainer {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 60px;
+
+  gap: 4px;
+  padding: 4px;
+
+  border-radius: 0 4px 4px 0;
+
+  background-color: var(--error);
+}
+.discountNumber {
+  font-weight: 700;
+  text-align: center;
+}
+.discountText {
+  font-size: 10;
+  text-align: center;
+}

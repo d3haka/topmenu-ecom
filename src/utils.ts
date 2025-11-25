@@ -4,11 +4,15 @@
 //   return Number(num).toLocaleString("fa").replaceAll(thousandSeperator, ",");
 // }
 
-export function priceInTomanFa(price: number) {
+export function getPriceInToman(price: number) {
   const DOLLOR_IN_TOMAN = 112_880;
 
-  const priceInTomanEn = Math.round(price * DOLLOR_IN_TOMAN);
+  const getPriceInTomanEn = Math.round(price * DOLLOR_IN_TOMAN);
 
-  return priceInTomanEn.toLocaleString("en");
-  // return priceInTomanEn.toLocaleString("fa").replaceAll(thousandSeperator, ",");
+  return getPriceInTomanEn.toLocaleString("en");
+  // return getPriceInTomanEn.toLocaleString("fa").replaceAll(thousandSeperator, ",");
+}
+
+export function getDiscountedPrice(price: number, discountPercentage: number) {
+  return Number((price * (100 - discountPercentage)) / 100);
 }

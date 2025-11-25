@@ -1,6 +1,6 @@
 import Image from "next/image";
 import s from "./product-card.module.scss";
-import { priceInTomanFa } from "@/utils";
+import { getDiscountedPrice, getPriceInToman } from "@/utils";
 import Link from "next/link";
 import { Product } from "@/api/types/product";
 import { motion } from "motion/react";
@@ -13,12 +13,6 @@ export function ProductCard({
   product: Product;
   cardIndex: number;
 }) {
-  const discountedPrice = Number(
-    ((product.price * (100 - (product.discountPercentage ?? 0))) / 100).toFixed(
-      2
-    )
-  );
-
   return (
     <Link
       href={`/products/${product.id}`}
@@ -50,7 +44,14 @@ export function ProductCard({
             alt="product-preview"
           />
 
-          <AddToCart product={product} />
+          <AddToCart
+            product={product}
+            containerStyles={{
+              position: "absolute",
+              top: "48%",
+              right: "1rem",
+            }}
+          />
         </div>
         <div>
           <div
@@ -64,18 +65,23 @@ export function ProductCard({
           <div>
             {product.discountPercentage ? (
               <>
-                <div className={s.priceDiscount}>
-                  {priceInTomanFa(product.price)}
+                <div className={s.priceLineThrough}>
+                  {getPriceInToman(product.price)}
                   <span> تومان</span>
                 </div>
                 <div className={s.price}>
-                  {priceInTomanFa(discountedPrice)}
+                  {getPriceInToman(
+                    getDiscountedPrice(
+                      product.price,
+                      product.discountPercentage
+                    )
+                  )}
                   <span> تومان</span>
                 </div>
               </>
             ) : (
               <div className={s.price}>
-                {priceInTomanFa(product.price)}
+                {getPriceInToman(product.price)}
                 <span> تومان</span>
               </div>
             )}

@@ -4,5 +4,5 @@ import { getProducts } from "@/api/products";
 export default async function ProductPage() {
   const productsRes = await getProducts();
 
-  return <ProductDetails products={productsRes} />;
+  return <ProductDetails productsResData={productsRes} />;
 }
