@@ -3,11 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useInterval } from "usehooks-ts";
 
-type SlideShowProps = {
-  images: string[];
-};
-
-export function SlideShow({ images }: SlideShowProps) {
+export function SlideShow({ images }: { images: string[] }) {
   const [imgIndex, setImgIndex] = useState(0);
 
   useInterval(() => {
@@ -48,12 +44,6 @@ export function SlideShow({ images }: SlideShowProps) {
             alt="product-image"
           />
         </motion.div>
-        {/* {images.map((img) => {
-          if (images[imgIndex] !== img) return null;
-          return (
-
-          );
-        })} */}
       </AnimatePresence>
     </div>
   );

@@ -1,10 +1,12 @@
 .button {
   position: fixed;
+  bottom: 16;
   left: 50%;
   translate: -50% 0;
-  width: 500px;
-  justify-content: space-between;
+  width: 468px;
+  justify-content: space-between !important;
   font-weight: 700;
+  z-index: 10;
 }
 
 .itemCount {
@@ -13,4 +15,5 @@
   height: 25;
   display: inline-block;
   background-color: #000;
+  margin-left: 4px;
 }

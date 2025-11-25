@@ -8,6 +8,7 @@ import { useProducts } from "@/queries/products";
 import { useCartTotalPriceWithDiscount } from "@/hooks/useCartTotalPriceWithDiscount";
 import { getPriceInToman } from "@/utils";
 import { Button } from "./button";
+import s from "./product-list.module.scss";
 
 export default function ProductList({ products }: { products: ProductsResData }) {
   const { data } = useProducts({
@@ -35,30 +36,9 @@ export default function ProductList({ products }: { products: ProductsResData })
 
       <AnimatePresence mode="wait">
         {cartItemCount > 0 && (
-          <Button
-            style={{
-              position: "fixed",
-              bottom: 16,
-              left: "50%",
-              translate: "-50% 0",
-              width: 500,
-              justifyContent: "space-between",
-              fontWeight: 700,
-            }}
-          >
+          <Button className={s.button}>
             <span>
-              <span
-                style={{
-                  borderRadius: "100%",
-                  width: 25,
-                  height: 25,
-                  backgroundColor: "#000",
-                  display: "inline-block",
-                  marginLeft: 4,
-                }}
-              >
-                {cartItemCount}
-              </span>
+              <span className={s.itemCount}>{cartItemCount}</span>
               <span style={{ fontSize: 14 }}>تکمیل خرید</span>
             </span>
             <span>{getPriceInToman(totalPrice)} تومان</span>
