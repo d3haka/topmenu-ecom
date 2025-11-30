@@ -67,7 +67,7 @@ export default function ProductDetails({
           />
         </div>
 
-        <div>{product.description}</div>
+        <div style={{ direction: "ltr" }}>{product.description}</div>
 
         <div className={s.btnContainer}>
           {cartItemCount > 0 ? (
@@ -87,6 +87,7 @@ export default function ProductDetails({
             </Button>
           )}
         </div>
+        <div style={{ height: 70, width: 0 }}></div>
       </div>
     </AnimatedPage>
   );
