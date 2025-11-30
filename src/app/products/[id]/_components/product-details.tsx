@@ -67,7 +67,7 @@ export default function ProductDetails({
           />
         </div>
 
-        <div>{product.description}</div>
+        <div style={{ direction: "ltr" }}>{product.description}</div>
 
         <div className={s.btnContainer}>
           {cartItemCount > 0 ? (

@@ -55,9 +55,7 @@ export function ProductCard({
           />
         </div>
         <div>
-          <div style={{ marginBottom: "4rem", width: "80%" }} className={s.title}>
-            {product.title}
-          </div>
+          <div className={s.title}>{product.title}</div>
           <div className={s.cardDescription}>{product.description}</div>
 
           <PriceWithDiscount
