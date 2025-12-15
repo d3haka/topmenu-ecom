@@ -31,7 +31,7 @@ export default function ProductDetails({
   if (!product) return;
 
   return (
-    <AnimatedPage hasBoxShadow style={{ position: "relative", overflow: "hidden" }}>
+    <div style={{ position: "relative", overflow: "hidden" }}>
       <div className={s.backBtn} onClick={() => router.back()}>
         <svg focusable="false" aria-hidden="true" viewBox="0 0 24 24" fill="#fff">
           <path d="M16.88 2.88c-.49-.49-1.28-.49-1.77 0L6.7 11.29c-.39.39-.39 1.02 0 1.41l8.41 8.41c.49.49 1.28.49 1.77 0s.49-1.28 0-1.77L9.54 12l7.35-7.35c.48-.49.48-1.28-.01-1.77z"></path>
@@ -89,6 +89,6 @@ export default function ProductDetails({
         </div>
         <div style={{ height: 70, width: 0 }}></div>
       </div>
-    </AnimatedPage>
+    </div>
   );
 }

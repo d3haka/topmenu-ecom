@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./styles.scss";
 import { Geist, Geist_Mono } from "next/font/google";
 import { QueryProvider } from "./_components/query-provider";
+import { AnimatedPage } from "./_components/animated-page";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,16 +16,16 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "خرید‌وفروش آنلاین",
-  icons: {
-    icon: "/favicon.png",
-  },
+  icons: "/favicon.png",
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fa" dir="rtl">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <AnimatedPage>{children}</AnimatedPage>
+        </QueryProvider>
       </body>
     </html>
   );

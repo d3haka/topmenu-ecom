@@ -18,7 +18,7 @@ export default function ProductList({ products }: { products: ProductsResData })
   const { totalPrice, cartItemCount } = useCartTotalPriceWithDiscount();
 
   return (
-    <AnimatedPage style={{ padding: 16 }}>
+    <div style={{ padding: 16 }}>
       {data?.products.map((product, index) => (
         <motion.div
           key={product.id}
@@ -45,6 +45,6 @@ export default function ProductList({ products }: { products: ProductsResData })
           </Button>
         )}
       </AnimatePresence>
-    </AnimatedPage>
+    </div>
   );
 }
