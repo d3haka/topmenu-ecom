@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: 110px calc(100% - 110px);
   @media (max-width: 400px) {
-    grid-template-columns: 60px calc(100% - 60px);
+    grid-template-columns: 70px calc(100% - 60px);
   }
   gap: 4px;
 
@@ -39,8 +39,11 @@
 }
 
 .title {
+  direction: ltr;
+  text-align: right;
   margin-bottom: 4rem;
-  width: 80%;
+  // width: 80%;
+  padding-left:80px;
 
   white-space: nowrap;
   overflow: hidden;

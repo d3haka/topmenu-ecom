@@ -8,21 +8,28 @@ export const PriceWithDiscount: FC<{
   discountPercentage?: number;
   cardVariant?: boolean;
 }> = ({ price, discountPercentage, cardVariant }) => {
-  let fontSize = 20,
-    width = "85%";
+  let fontSize = 20;
 
   if (cardVariant) {
     fontSize = 16;
-    width = "28%";
   }
 
   return (
-    <div style={{ fontWeight: 700, fontSize, position: "relative" }}>
+    <div
+      style={{
+        fontWeight: 700,
+        fontSize,
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "end",
+      }}
+    >
       {discountPercentage ? (
         <>
           <motion.div
             className={s.priceLineThrough}
-            style={{ fontSize: "0.8em" }}
+            style={{ fontSize: "0.8em", width: "fit-content" }}
             initial={{ y: 26, x: 17, scale: 1.2 }}
             animate={{
               y: 0,
@@ -32,11 +39,17 @@ export const PriceWithDiscount: FC<{
             }}
           >
             <motion.hr
-              style={{ position: "absolute", top: 10, width, left: 0 }}
+              style={{
+                position: "absolute",
+                top: 10,
+                width: "100%",
+                left: 0,
+                color: "var(--primaryText)",
+              }}
               initial={{ x: -200 }}
               animate={{
                 x: 0,
-                transition: { duration: 0.2, delay: 0.1 },
+                transition: { duration: 0.3, delay: 0.1 },
               }}
             />
             {getPriceInToman(price)}
